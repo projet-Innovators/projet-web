@@ -352,14 +352,17 @@
                                                         <input type="submit" name="add" class="btn btn-success btn-block" value="Add">
 
                                                     </div>
+                                                   
                                                 </form>
-
+                                                <button class="btn btn-success btn-block" onclick="exportTableToExcel('tblData')">excel</button> 
+                                                <button class="btn btn-success btn-block" onclick="CopyToClipboard('tblData')">Copy</button>
                                             </div>
                                             <hr>
 
                                             <div class="col-md-12">
 
                                                 <table class="table table-hover">
+                                                <table class="table" id="tblData">
                                                     <thead>
                                                         <tr>
                                                             <th style="width: 10%">ID</th>
@@ -486,6 +489,53 @@
                                         <script src="assets/js/pcoded.min.js"></script>
                                         <script src="assets/js/demo-12.js"></script>
                                         <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+                                        <script>
+                                        function CopyToClipboard(containerid) {
+if (document.selection) { 
+    var range = document.body.createTextRange();
+    range.moveToElementText(document.getElementById(containerid));
+    range.select().createTextRange();
+    document.execCommand("copy"); 
+
+} else if (window.getSelection) {
+    var range = document.createRange();
+     range.selectNode(document.getElementById(containerid));
+     window.getSelection().addRange(range);
+     document.execCommand("copy");
+     alert("text copied") 
+}
+}
+    function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+</script>
 </body>
 
 </html>

@@ -244,8 +244,12 @@
                                   
                                 include "../core/produitC.php";
                                 $prodC = new ProduitC();
+                                if(isset($_POST['rechP']))
+                                {
+                                    $listeProd= $prodC->recherche($_POST['rechP']);
+                                }else{
                                 $listeProd = $prodC->afficherproduits();
-
+                                }
                                 foreach ($listeProd as $row) {
                                 ?>
                                     <div class="product-width col-lg-6 col-xl-4 col-md-6 col-sm-6">
@@ -287,14 +291,15 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-3">
                     <div class="shop-sidebar">
                         <div class="shop-widget">
                             <h4 class="shop-sidebar-title">Search Products</h4>
                             <div class="shop-search mt-25 mb-50">
-                                <form class="shop-search-form">
-                                    <input type="text" placeholder="Find a product">
-                                    <button type="submit">
+                                <form class="shop-search-form" method="POST">
+                                    <input  type="text" placeholder="Find a product" name="rechP" >
+                                    <button type="submit"name="search">
                                         <i class="icon-magnifier"></i>
                                     </button>
                                 </form>

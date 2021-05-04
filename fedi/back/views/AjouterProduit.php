@@ -23,7 +23,7 @@ $Produit1C->ajouterproduit($Produit1);
 
 // Your Account SID and Auth Token from twilio.com/console
 $sid = 'ACe05973d5d740be1d1321823bb61cdc64';
-$token = 'e6b172bcc53b477ae2e895dcef7ce08b';
+$token = '43ad48d0d0c2889e639ffd0171755c79';
 $client = new Client($sid, $token);
 
 // Use the client to do fun stuff like send text messages!

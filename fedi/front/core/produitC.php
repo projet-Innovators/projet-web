@@ -64,7 +64,7 @@ class ProduitC {
         }
 	}
 	function modifierproduit($produit,$Id){
-		$sql="UPDATE Produit SET Id=:idd, Nom=:Nom,Prix=:Prix,Image=:Image , Quantite=:Quantite, Description=:Description  WHERE Id=:Id";
+		$sql="UPDATE produit SET Id=:idd, Nom=:Nom,Prix=:Prix,Image=:Image , Quantite=:Quantite, Description=:Description  WHERE Id=:Id";
 		
 		$db = config::getConnexion();
 		
@@ -103,7 +103,7 @@ try{
 		
 	}
 	function recupererproduit($id){
-		$sql="SELECT * from Produit where Id=$id";
+		$sql="SELECT * from produit where Id=$id";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -114,18 +114,16 @@ try{
         }
 	}
 	
-	function RecupCategories()
+	function recherche($key)
 	{
-		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
-		$sql="SElECT * From Categorie";
+		$sql = "SELECT * FROM produit WHERE nom LIKE '%$key%'  OR prix LIKE '%$key%'";
 		$db = config::getConnexion();
-		try{
-		$liste=$db->query($sql);
-		return $liste;
+		try {
+			$liste = $db->query($sql);//retourne le resultat en un objet PDOstatement
+			return $liste;
+		} catch (Exception $e) {
+			die('Erreur: ' . $e->getMessage());
 		}
-        catch (Exception $e){
-            die('Erreur: '.$e->getMessage());
-        }	
 	}
 }
 
