@@ -1,7 +1,6 @@
 <?PHP
 
 include "../entities/promo.php";
-include "../config.php";
 
 class PromoC {
 	
@@ -9,7 +8,7 @@ class PromoC {
 
 	function ajouterPromo($promo){
 
-		$sql="insert into promo (id,idProd,date_debut,date_fin,prix_nouv,taux) values (:id, :idProd,:date_debut,:date_fin,:prix_nouveau,:taux)";
+		$sql="insert into promo (id,idProd,date_debut,date_fin,prix_nouveau,taux) values (:id, :idProd,:date_debut,:date_fin,:prix_nouveau,:taux)";
 		$db = config::getConnexion();
 		try{
         $req=$db->prepare($sql);
@@ -74,7 +73,7 @@ function afficherpromo(){
 	}
 
 function modifiePromo($promo,$id){
-		$sql="UPDATE promo SET id=:idd, idProd=:idProd,date_debut=:date_debut,date_fin=:date_fin,prix_nouv=:prix_nouveau WHERE id=:id";
+		$sql="UPDATE promo SET id=:idd, idProd=:idProd,date_debut=:date_debut,date_fin=:date_fin,prix_nouveau=:prix_nouveau WHERE id=:id";
 		
 		$db = config::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
@@ -108,16 +107,16 @@ try{
 		
 	}
 
-    function calcultaux($prix_in,$prix_f)
+    function calcultaux($prix_in,$taux)
 	{
-		$taux_promo=(($prix_in-$prix_f)/$prix_in)*100;
-		return $taux_promo;
+		$prix_f=$prix_in-(($prix_in*$taux)/100);
+		return $prix_f;
 
 
 	}
 
 	function recupererPromo($Id){
-		$sql="SELECT * from promo where Id=$Id";
+		$sql="SELECT * from promo where idProd=$Id";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);

@@ -235,13 +235,7 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                <li class="">
-                                    <a href="checkout_promo.php">
-                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Promotion</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
+                                
 
                             </ul>
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Gestion Reclamation</div>
@@ -339,7 +333,12 @@
                                                         <td><?PHP echo $row['objet']; ?></td>
                                                         <td><?PHP echo $row['contenu']; ?></td>
                                                         <td><img width="80" src="images/<?php echo $row['capture'] ?>" alt="<?php echo $row['capture'] ?>"></td>
-                                                      
+                                                        <td style="width: 5%">
+                                                        <form method="POST" action="pdfReclam.php">
+                                                            <input type="submit" name="pdf" value="PDF" class="btn btn-info btn-block">
+                                                            <input type="hidden" value="<?php echo $row['id']; ?>" name="idreclam">
+                                                        </form>
+                                                        </td>
                                                           <?php
                                                           if($row['etat'] == 0)
                                                           {

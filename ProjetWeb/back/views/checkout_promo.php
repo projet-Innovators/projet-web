@@ -190,20 +190,14 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                <li class="">
+                                <li class="active">
                                     <a href="checkout_produit.php">
                                         <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.dash.main">Produit</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                <li class="active">
-                                    <a href="checkout_promo.php">
-                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Promotion</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
+                                
 
                             </ul>
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Gestion Reclamation</div>
@@ -270,43 +264,37 @@
 
 
                                                 <?PHP
-                                                 include "../core/promoC.php";
                                                     include "../core/produitC.php";
                                                     $prodC = new ProduitC();
-                                                    $listeProd = $prodC->recupererAllproduit();
-
+                                                    $listeProd = $prodC->recupererproduit($_GET['id']);
+                                                    $idProd;
                                                     //var_dump($listeEmployes->fetchAll());
                                                     ?>
 
 
                                                     <div class="form-group">
-                                                        <tr>
-                                                            <td><strong>Produit </strong></td>
-                                                            <td><select name="idProd">
-                                                                    <?PHP
+                                                    <?PHP
                                                                     foreach ($listeProd as $row) {
-                                                                       
+                                                                       $idProd=$row['id'];
                                                                     ?>
-                                                                        <option value="<?PHP echo $row['id']; ?>"><?PHP echo $row['nom']; ?>
-                                                                        </option>
+                                                    <h5 class=" text">Produit:<?PHP echo $row['nom']; ?></h5>
+                                                    <input type="hidden" value="<?PHP echo $row['id']; ?>" name="idProd">
                                                                     <?PHP } ?>
-                                                                </select>
-                                                            </td>
-                                                        </tr>
+                                                           
                                                     </div>
 
-                                                    <div class="form-group">
-                                                        <input type="date" name="date_debut" class="form-control" placeholder="Date_Debut ">
-                                                    </div>
+                                                   
 
 
                                                     <div class="form-group">
+                                                    <h5 class=" text">Date Fin</h5>
                                                         <input type="date" name="date_fin" class="form-control"  placeholder="Date_Fin">
                                                     </div>
                                      
 
                                                     <div class="form-group">
-                                                        <input type="text" name="prix_nouveau" class="form-control" required pattern="[0-9.,]{1,12}" placeholder="Enter your New Price">
+                                                    <h5 class=" text">Pourcentage a rediure</h5>
+                                                        <input type="text" name="taux" class="form-control" required pattern="[0-9.,]{1,12}" placeholder="Enter taux">
                                                     </div>
 
                                                 
@@ -314,7 +302,6 @@
                                                     <div class="form-group">
 
                                                         <input type="submit" name="add" class="btn btn-success btn-block" value="Add">
-                                                        <input type="hidden" name="id" value="">
 
                                                     </div>
                                                 </form>
@@ -339,14 +326,14 @@
 
   </thead>
   <?PHP
-          
+           include "../core/promoC.php";
   $promo1C=new PromoC();
-  $listePromo=$promo1C->afficherpromo();
+  $listePromo=$promo1C->recupererPromo($idProd);
   $prodC1 = new ProduitC();
   
   foreach ($listePromo as $row) {
       $idprod= $row['idProd'];
-      $prixnouv= $row['prix_nouv'];
+      $prixnouv= $row['prix_nouveau'];
       $datefin= $row['date_fin'];
       $taux= $row['taux'];
       $listeProd1 = $prodC1->recupererproduit($idprod);
@@ -368,12 +355,12 @@
         <td><?PHP echo $taux ; ?></td>
 
         <td style="width: 10%" class="width=" 70%>
-          <form method="POST" action="SupprimerPromo.php">
+          <form method="POST" action="supprimerPromo.php">
             <input type="submit" name="supprimer" value="supprimer" class="btn btn-danger btn-block">
             <input type="hidden" value="<?PHP echo $row['id']; ?>" name="Id">
           </form>
         </td>
-        <td style="width: 10%"><a class="btn btn-success btn-block" href="modifierProduit.php?id=<?PHP echo $row['id']; ?>">
+        <td style="width: 10%"><a class="btn btn-success btn-block" href="modifierPromo.php?id=<?PHP echo $row['id']; ?>">
             Modifier</a></td>
       </tr>
 

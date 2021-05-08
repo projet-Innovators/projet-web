@@ -345,7 +345,7 @@
                                         $categorieC1 = new CategorieC();
                                         $cat = new Categorie($_POST['id_ini'], $_POST['nom']);
                                         $categorieC1->modifierCategorie($cat, $_GET['id']);
-                                        echo $_POST['id_ini'];
+                                        
                                         echo ("<script> window.location.replace(\"checkout_categorie.php\")</script>");
                                     }
                                     ?>

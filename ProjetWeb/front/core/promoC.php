@@ -116,7 +116,7 @@ try{
 	}
 
 	function recupererPromo($Id){
-		$sql="SELECT * from promo where Id=$Id";
+		$sql="SELECT * from promo where idProd=$Id";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -127,18 +127,7 @@ try{
         }
 	}
 
-	function afficherproduits(){
-		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
-		$sql="SElECT * From produit";
-		$db = config::getConnexion();
-		try{
-		$liste=$db->query($sql);
-		return $liste;
-		}
-        catch (Exception $e){
-            die('Erreur: '.$e->getMessage());
-        }	
-	}
+
 	
 	/*function rechercherListepromos($tarif){
 		$sql="SELECT * from promo where tarifHoraire=$tarif";

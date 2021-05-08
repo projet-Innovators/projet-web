@@ -1,5 +1,4 @@
 <?PHP
-include "../entities/produit.php";
 
 class Promo{
 

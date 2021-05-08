@@ -1,6 +1,7 @@
 <?PHP
 include "categorieC.php";
-include "../entities/Produit.php";
+include "promoC.php";
+include "../entities/produit.php";
 class ProduitC {
 
 	

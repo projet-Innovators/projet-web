@@ -22,12 +22,11 @@ $reclamC=new reclamtionC();
 
 
 $reclamC-> ajouterReclamtion($reclam);
-
+//echo("<script> window.location.replace(\"checkout_camping.php\")</script>");
 header('Location: contact.php');
 
 }else{
 	echo "vérifier les champs";
-	header('Location: contact.php');
 }
 //*/
 
