@@ -1,6 +1,6 @@
 <?PHP
-
-include "../entities/Produit.php";
+include "../core/categorieC.php";
+include "../entities/produit.php";
 class ProduitC {
 
 	
@@ -66,13 +66,14 @@ class ProduitC {
         }
 	}
 	function modifierproduit($produit,$Id){
-		$sql="UPDATE Produit SET Id=:idd, Nom=:Nom,Prix=:Prix,Image=:Image , Quantite=:Quantite, Description=:Description  WHERE Id=:Id";
+		$sql="UPDATE produit SET id=:idd,idCat=:IdCat ,nom=:Nom,prix=:Prix,image=:Image , quantite=:Quantite, description=:Description  WHERE id=:Id";
 		
 		$db = config::getConnexion();
 		
 try{		
         $req=$db->prepare($sql);
 		$idd=$produit->getId();
+		$IdCat=$produit->getIdCat();
         $Nom=$produit->getNom();
         $Prix=$produit->getPrix();
         $Image=$produit->getImage();
@@ -81,9 +82,10 @@ try{
 
       
        
-		$datas = array(':idd'=>$idd, ':Id'=>$Id, ':Nom'=>$Nom,':Prix'=>$Prix, ':Image'=> $Image, ':Description'=>$Description, ':Quantite'=>$Quantite);
+		$datas = array(':idd'=>$idd, ':Id'=>$Id,':IdCat'=>$IdCat, ':Nom'=>$Nom,':Prix'=>$Prix, ':Image'=> $Image, ':Description'=>$Description, ':Quantite'=>$Quantite);
 		$req->bindValue(':idd',$idd);
 		$req->bindValue(':Id',$Id);
+		$req->bindValue(':IdCat',$IdCat);
 		$req->bindValue(':Nom',$Nom);
 		$req->bindValue(':Prix',$Prix);
 		$req->bindValue(':Image',$Image);
@@ -127,7 +129,19 @@ try{
         }
 	}
 	
-
+	function RecupCategories()
+	{
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From Categorie";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
 }
 
 ?>

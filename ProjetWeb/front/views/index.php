@@ -227,7 +227,7 @@ foreach($listeCat as $row){
                     <div class="col-lg-4 col-md-4">
                         <div class="single-food-category-2 text-center mb-30">
                             <div class="single-food-hover">
-                                <img src="assets/img/product/animal.png" alt="">
+                                <img src="images/<?php echo $row['image'] ?>" alt="">
                             </div>
                             <h3><?php echo $row['nom'] ?></h3>
                         </div>

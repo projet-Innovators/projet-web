@@ -1,12 +1,12 @@
 <?PHP
 include "../config.php";
-include "../entities/Categorie.php";
+include "../entities/categorie.php";
 
 class CategorieC {
 
 	
 	function ajouterCategorie($categorie){
-		$sql="INSERT INTO  Categorie (Id,Nom) VALUES (:Id,:Nom)";
+		$sql="INSERT INTO  categorie (Id,Nom) VALUES (:Id,:Nom)";
 		$db = config::getConnexion();
 		try{
         $req=$db->prepare($sql);
@@ -32,7 +32,7 @@ class CategorieC {
 	function afficherCategories()
 	{
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
-		$sql="SElECT * From Categorie";
+		$sql="SElECT * From categorie";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);

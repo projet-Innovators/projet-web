@@ -233,13 +233,7 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                <li class="">
-                                    <a href="checkout_promo.php">
-                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Promotion</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
+                               
                                 
                             </ul>
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Gestion Reclamation</div>

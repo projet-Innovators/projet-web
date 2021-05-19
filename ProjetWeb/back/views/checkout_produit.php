@@ -198,13 +198,7 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                <li class="">
-                                    <a href="checkout_promo.php">
-                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Promotion</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
+                                
 
                             </ul>
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Gestion Reclamation</div>
@@ -270,49 +264,57 @@
                                                 <form class="was-validated" action="AjouterProduit.php" method="POST" enctype="multipart/form-data">
 
 
+
                                                     <div class="form-group">
-                                                        <input type="text" name="Nom" class="form-control" required pattern="[0-9a-zA-Z- \.,]{3,12}" placeholder="Entre the name of product">
+                                                        <script language="javascript" type="text/javascript">
+                                                            function allLetter(inputtxt) {
+                                                                var letters = /^[0-9]+$,/;
+                                                                if (inputtxt.value.match(letters)) {
+                                                                    document.form.text.focus();
+                                                                    return true;
+                                                                } else {
+                                                                    alert("Prière de saisir des lettres uniquement");
+                                                                    document.form.text.focus();
+                                                                    return false;
+                                                                }
+                                                            }
+                                                        </script>
+                                                        <input type="text" name="Nom" class="form-control" onblur="allLetter(this)" required pattern="[0-9a-zA-Z- \.,]{3,12}" placeholder="Entre the name of product">
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <input type="text" name="Prix" class="form-control" required pattern="[0-9.,]{1,12}" placeholder="Enter your Price">
+                                                        <input type="text" name="Prix" class="form-control" onblur="allnumber()" required pattern="[0-9.,]{1,12}" placeholder="Enter your Price">
                                                     </div>
 
 
 
 
                                                     <div class="form-group">
-                                                        <input min=1 type="number" name="Quantite" class="form-control" required pattern="[0-9]{1,5}" placeholder="Enter your Quantite">
+                                                        <input min=1 type="number" name="Quantite" class="form-control" onblur="allnumeric()" required pattern="[0-9]{1,5}" placeholder="Enter your Quantite">
                                                     </div>
                                                     <div class="form-group">
-
 
                                                         <script language="javascript" type="text/javascript">
-                                                            function calculeLongueur() {
-                                                                var iLongueur, iLongueurRestante;
-                                                                iLongueur = document.getElementById('autre').value.length;
-                                                                if (iLongueur > 30) {
-                                                                    document.getElementById('autre').value = document.getElementById('autre').value.substring(0, 40);
-                                                                    iLongueurRestante = 0;
+                                                            function allLetter(inputtxt) {
+                                                                var letters = /^[0-9]+$,/;
+                                                                if (inputtxt.value.match(letters)) {
+                                                                    document.form.text.focus();
+                                                                    return true;
                                                                 } else {
-                                                                    iLongueurRestante = 40 - iLongueur;
+                                                                    alert("Prière de saisir des lettres uniquement");
+                                                                    document.form.text.focus();
+                                                                    return false;
                                                                 }
-                                                                if (iLongueurRestante <= 1)
-                                                                    document.getElementById('indic').innerHTML = iLongueurRestante + "&nbsp;caract&egrave;re&nbsp;disponible";
-                                                                else
-                                                                    document.getElementById('indic').innerHTML = iLongueurRestante + "&nbsp;caract&egrave;res&nbsp;disponibles";
                                                             }
                                                         </script>
 
 
-
-
-                                                        <textarea onblur="calculeLongueur();" onfocus="calculeLongueur();" onkeydown="calculeLongueur();" onkeyup="calculeLongueur();" id="autre" name="Description" class="form-control" required pattern="[0-9a-zA-Z-\.]{3,400}" placeholder="Informations About the products"></textarea>
+                                                        <textarea onblur="allLetter()" id="autre" name="Description" class="form-control" required pattern="[0-9a-zA-Z-\.]{3,400}" placeholder="Informations About the products"></textarea>
 
                                                     </div>
 
                                                     <?PHP
-                                                    include "../core/categorieC.php";
+                                                    include "../core/produitC.php";
                                                     $categC = new CategorieC();
                                                     $listeCat = $categC->recupererAllCategorie();
 
@@ -348,65 +350,68 @@
 
                                             </div>
                                             <hr>
-                                           
+
                                             <div class="col-md-12">
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th style="width: 10%">ID</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Quantite</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th>supprimer</th>
-      <th>update</th>
-    </tr>
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 10%">ID</th>
+                                                            <th>Name</th>
+                                                            <th>Price</th>
+                                                            <th>Quantite</th>
+                                                            <th>Description</th>
+                                                            <th>Image</th>
+                                                            <th>supprimer</th>
+                                                            <th>update</th>
+                                                            <th>Promotion</th>
+                                                        </tr>
 
-  </thead>
-  <?PHP
-  include "../core/produitC.php";
-  $produit1C=new ProduitC();
-  $listeProduits=$produit1C->afficherproduits();
+                                                    </thead>
+                                                    <?PHP
 
-  foreach ($listeProduits as $row) {
-  ?>
+                                                    $produit1C = new ProduitC();
+                                                    $listeProduits = $produit1C->afficherproduits();
 
-    <tbody>
-      <tr>
-        <td><?PHP echo $row['id']; ?></td>
-        <td><?PHP echo $row['nom']; ?></td>
-        <td><?PHP echo $row['prix']; ?></td>
-        <td><?PHP echo $row['quantite']; ?></td>
-        <td><?PHP echo $row['description']; ?></td>
+                                                    foreach ($listeProduits as $row) {
+                                                    ?>
 
-        <td><img width="80" src="images/<?php echo $row['image'] ?>" alt="<?php echo $row['image'] ?>"></td>
-        <td style="width: 10%" class="width=" 70%>
-          <form method="POST" action="supprimerProduit.php">
-            <input type="submit" name="supprimer" value="supprimer" class="btn btn-danger btn-block">
-            <input type="hidden" value="<?PHP echo $row['id']; ?>" name="Id">
-          </form>
-        </td>
-        <td style="width: 10%"><a class="btn btn-success btn-block" href="modifierProduit.php?id=<?PHP echo $row['id']; ?>">
-            Modifier</a></td>
-      </tr>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><?PHP echo $row['id']; ?></td>
+                                                                <td><?PHP echo $row['nom']; ?></td>
+                                                                <td><?PHP echo $row['prix']; ?></td>
+                                                                <td><?PHP echo $row['quantite']; ?></td>
+                                                                <td><?PHP echo $row['description']; ?></td>
 
-
-
-
+                                                                <td><img width="80" src="images/<?php echo $row['image'] ?>" alt="<?php echo $row['image'] ?>"></td>
+                                                                <td style="width: 10%" class="width=" 70%>
+                                                                    <form method="POST" action="supprimerProduit.php">
+                                                                        <input type="submit" name="supprimer" value="supprimer" class="btn btn-danger btn-block">
+                                                                        <input type="hidden" value="<?PHP echo $row['id']; ?>" name="Id">
+                                                                    </form>
+                                                                </td>
+                                                                <td style="width: 10%"><a class="btn btn-success btn-block" href="modifierProduit.php?id=<?PHP echo $row['id']; ?>">
+                                                                        Modifier</a></td>
+                                                                        <td style="width: 10%"><a class="btn btn-success btn-block" href="checkout_promo.php?id=<?PHP echo $row['id']; ?>">
+                                                                        Promotion</a></td>
+                                                            </tr>
 
 
-     
-     
-    </tbody>
-    <?php
-              }
-        ?>
-</table>
-</div>
 
-        
+
+
+
+
+
+                                                        </tbody>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </table>
+                                            </div>
+
+
                                         </div>
 
                                         <div class="fixed-button">
@@ -460,6 +465,20 @@
 <![endif]-->
                                         <!-- Warning Section Ends -->
                                         <!-- Required Jquery -->
+
+                                        <script language="javascript" type="text/javascript">
+                                            function allnumber(inputtxt) {
+                                                var letters = / ^[A-Za-z]+$/;
+                                                if (inputtxt.value.match(letters)) {
+                                                    document.form.text.focus();
+                                                    return true;
+                                                } else {
+                                                    alert("Prière de saisir des numeros uniquement");
+                                                    document.form.text.focus();
+                                                    return false;
+                                                }
+                                            }
+                                        </script>
                                         <script type="text/javascript" src="assets/js/jquery/jquery.min.js"></script>
                                         <script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.min.js"></script>
                                         <script type="text/javascript" src="assets/js/popper.js/popper.min.js"></script>

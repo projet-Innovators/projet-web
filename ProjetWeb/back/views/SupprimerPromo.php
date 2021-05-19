@@ -1,9 +1,14 @@
 <?PHP
+include "../core/produitC.php";
 include "../core/promoC.php";
-$promo=new PromoC();
-if (isset($_POST["Id"])){
-	$promo->supprimerPromo($_POST["Id"]);
-	header('Location: checkout_promo.php');
+if (isset($_POST["Id"]) ){
+	$Promo1C=new PromoC();
+	$Promo1C->supprimerPromo($_POST["Id"]);
+	$id=$_POST["Id"];
+	//echo "supprimé";
+	header('Location: checkout_produit');
 }
-
+else {
+	echo"fail";
+}
 ?>

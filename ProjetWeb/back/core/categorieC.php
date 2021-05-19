@@ -6,19 +6,21 @@ class CategorieC {
 
 	
 	function ajouterCategorie($categorie){
-		$sql="INSERT INTO  categorie (id,nom) VALUES (:Id,:Nom)";
+		$sql="INSERT INTO  categorie (id,nom,image) VALUES (:Id,:Nom,:Image)";
 		$db = config::getConnexion();
 		try{
         $req=$db->prepare($sql);
 		
         $Id=$categorie->getId();
         $Nom=$categorie->getNom();
-        
+		$Image=$categorie->getImage();
+
         
       
 		$req->bindValue(':Id',$Id);
 		$req->bindValue(':Nom',$Nom);
-	
+		$req->bindValue(':Image',$Image); 
+
 	
         $req->execute();
            
@@ -32,7 +34,7 @@ class CategorieC {
 	function afficherCategories()
 	{
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
-		$sql="SElECT * From categorie";
+		$sql="SELECT * From categorie";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);

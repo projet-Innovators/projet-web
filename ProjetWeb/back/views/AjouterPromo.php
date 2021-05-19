@@ -3,7 +3,7 @@
 include "../core/promoC.php";
 include "../core/produitC.php";
 
-if (isset($_POST['idProd']) and isset($_POST['date_debut']) and isset($_POST['date_fin']) and isset($_POST['prix_nouveau']) ){
+if (isset($_POST['idProd']) and  isset($_POST['date_fin']) and isset($_POST['taux']) ){
 
 	$produit1C=new ProduitC();
 	$listeProduits=$produit1C->afficherproduits();
@@ -12,7 +12,7 @@ if (isset($_POST['idProd']) and isset($_POST['date_debut']) and isset($_POST['da
 	
     
 $today=date("Y-m-d");
-    $priiix=$_POST['prix_nouveau'];
+    $taux=$_POST['taux'];
 	$yID=$_POST['idProd'];
     
 
@@ -24,13 +24,13 @@ $today=date("Y-m-d");
 		$prix = $nn['prix'];
 	}
 
-	$tauxx=$promocc->calcultaux($prix,$priiix);
+	$prixF=$promocc->calcultaux($prix,$taux);
 
-	if($priiix<$prix)
+	if($prixF<$prix)
 	{
 		
 	
-$promo1=new promo($_POST['id'],$_POST['idProd'],$_POST['date_debut'],$_POST['date_fin'],$priiix,$tauxx);
+$promo1=new promo($_POST['id'],$_POST['idProd'],$today,$_POST['date_fin'],$prixF,$taux);
 
 
 //var_dump($promo1);
@@ -39,27 +39,21 @@ $promo1=new promo($_POST['id'],$_POST['idProd'],$_POST['date_debut'],$_POST['dat
 $promo1C=new promoC();
 
 
-if($_POST['date_fin']< $_POST['date_debut'])
-{
-	echo("<script> alert(\"il faut que la date fin soit superieur a la date debut\")</script>");
-	echo("<script> document.Location.replace(\"checkout_promo.php\")</script>");
-
-}
-else if($today<$_POST['date_fin']){
+if($today<$_POST['date_fin']){
 $promo1C->ajouterPromo($promo1);
-header('Location: checkout_promo.php');
+header('Location: checkout_produit.php');
 //echo ("$today=("y-m-d")");
 
 }else
 {
 
 	echo("<script> alert(\"vérifier la date fin avec la date actuelle\")</script>");
-	echo("<script> document.Location.replace(\"checkout_promo.php\")</script>");
+	echo("<script> window.location.replace(\"checkout_produit.php\")</script>");
 }
 }else{
 		
 	echo("<script> alert(\"verifier le prix\")</script>");
-	echo("<script> document.Location.replace(\"checkout_promo.php\")</script>");
+	echo("<script> window.location.replace(\"checkout_produit.php\")</script>");
 
 
 }
@@ -67,7 +61,8 @@ header('Location: checkout_promo.php');
 
 else{
 	echo("<script> alert(\"verifier les champs\")</script>");
-	echo("<script> document.Location.replace(\"checkout_promo.php\")</script>");
-//*/
+    header('Location: checkout_produit.php');
 }
+//*/
+
 ?>

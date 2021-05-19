@@ -40,16 +40,16 @@
                         <div class="main-menu text-center">
                             <nav>
                                 <ul>
-                                    <li><a href="index.html">HOME</a>
+                                    <li><a href="index.php">HOME</a>
 
                                     </li>
-                                    <li class="mega-menu-position"><a href="shop-page.html">Food</a>
+                                    <li class="mega-menu-position"><a href="shop-page.php">Food</a>
 
                                     </li>
 
 
 
-                                    <li><a href="contact.html">contact us</a></li>
+                                    <li><a href="contact.php">contact us</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -241,12 +241,26 @@
                         <div class="product-view product-grid">
                             <div class="row">
                                 <?php
-                                   include "../core/categorieC.php";
+
                                 include "../core/produitC.php";
                                 $prodC = new ProduitC();
                                 $listeProd = $prodC->afficherproduits();
+                                $promo1C = new PromoC();
+
+
 
                                 foreach ($listeProd as $row) {
+                                    $id = $row['id'];
+                                    $prix = $row['prix'];
+                                    $listeProm = $promo1C->recupererPromo($id);
+                                    $taux;
+                                    $priv_nouv;
+                                    $idProd=0;
+                                    foreach ($listeProm as $rowP) {
+                                        $priv_nouv = $rowP['prix_nouveau'];
+                                        $idProd = $rowP['idProd'];
+                                        $taux = $rowP['taux'];
+                                    }
                                 ?>
                                     <div class="product-width col-lg-6 col-xl-4 col-md-6 col-sm-6">
                                         <div class="product-wrapper mb-10">
@@ -263,24 +277,48 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-action-wishlist">
-                                                    <a title="Wishlist" href="#">
-                                                        <i class="ti-heart"></i>
+                                                    <a title="Taux">
+                                                    <?php
+                                                    
+                                                    if (($id) == ($idProd)) {
+                                                ?>
+                                                       <i><?php echo $taux ?>% de Reduction!</i>
+
+                                                    <?PHP
+                                                    } 
+
+                                                    ?>
+                                                        
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="product-content">
                                                 <h4><a href="product-details.html"><?php echo $row['nom'] ?></a></h4>
                                                 <div class="product-price">
-                                                    <span class="new">$20.00 </span>
-                                                    <span class="old">$50.00</span>
+                                                    <?php
+                                                    
+                                                        if (($id) == ($idProd)) {
+                                                    ?>
+                                                            <span class="new"><?php echo $priv_nouv  ?> DT </span>
+
+                                                        <?PHP
+                                                        } else {
+
+                                                        ?>
+                                                            <span class="new"><?php echo $prix ?> DT </span>
+                                                        <?PHP
+
+                                                        }
+                                                        ?>
                                                 </div>
                                             </div>
 
                                         </div>
                                     </div>
-                                <?PHP
-                                }
-                                ?>
+                            <?PHP
+                                                    
+                                                }
+                            ?>
 
                             </div>
 
@@ -306,7 +344,7 @@
                         <div class="shop-widget mt-50">
                             <h4 class="shop-sidebar-title">Food Category </h4>
                             <?php
-                         
+
                             $Categorie1C = new CategorieC();
                             $listeCat = $Categorie1C->afficherCategories();
 

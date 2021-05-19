@@ -273,41 +273,12 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="contact-form-style mb-20">
-                                            <div class="form-group">
-                                                        <input type="text" name="subject" class="form-control" required  placeholder="Enter your Subject">
-                                                    </div>
+                                            <input name="subject" placeholder="Subject" type="text">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                    <div class="form-group">
-
-
-<script language="javascript" type="text/javascript">
-    function calculeLongueur() {
-        var iLongueur, iLongueurRestante;
-        iLongueur = document.getElementById('autre').value.length;
-        if (iLongueur > 30) {
-            document.getElementById('autre').value = document.getElementById('autre').value.substring(0, 40);
-            iLongueurRestante = 0;
-        } else {
-            iLongueurRestante = 40 - iLongueur;
-        }
-        if (iLongueurRestante <= 1)
-            document.getElementById('indic').innerHTML = iLongueurRestante + "&nbsp;caract&egrave;re&nbsp;disponible";
-        else
-            document.getElementById('indic').innerHTML = iLongueurRestante + "&nbsp;caract&egrave;res&nbsp;disponibles";
-    }
-</script>
-
-
-
-
-<textarea onblur="calculeLongueur();" onfocus="calculeLongueur();" onkeydown="calculeLongueur();" onkeyup="calculeLongueur();" id="autre" name="message" class="form-control" required pattern="[0-9a-zA-Z-\.]{3,400}" placeholder="Message"></textarea>
-
-</div>
                                         <div class="contact-form-style">
-
-                                           
+                                            <textarea name="message" placeholder="Message"></textarea>
                                             <label>Add capture</label>
                                             <input type="file" name="photo" class="btn-style">
 
@@ -321,6 +292,9 @@
 
                                 </div>
                             </form>
+                            <iframe width="100%" height="500" src="https://maps.google.com/maps?q= Résidence LA ROSE DE L'ARIANA
+97 Avenue Fethi Zouhir, Ariana 2083
+ &output=embed"></iframe
                             <p class="form-messege"></p>
                         </div>
                     </div>

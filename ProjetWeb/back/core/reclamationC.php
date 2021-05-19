@@ -6,17 +6,17 @@ class reclamtionC {
 	
 	
 	function ajouterReclamtion($reclamtion){
-		$sql="insert into reclamation (idClient,Objet,Capture,Contenu,Etat) values (:id, :objet,:capture,:contenu,:etat)";
+		$sql="insert into reclamation (idClient,Objet,Capture,Contenu,Etat) values (:id_Client, :objet,:capture,:contenu,:etat)";
 		$db = config::getConnexion();
 		try{
         $req=$db->prepare($sql);
 		
-        $id=$reclamtion->getId();
+        $id_Client=$reclamtion->getId_Client();
         $objet=$reclamtion->getObjet();
         $capture=$reclamtion->getCapture();
         $contenu=$reclamtion->getContenu();
         $etat=0;
-		$req->bindValue(':id',$id);
+		$req->bindValue(':id_Client',$id_Client);
 		$req->bindValue(':objet',$objet);
 		$req->bindValue(':capture',$capture);
 		$req->bindValue(':contenu',$contenu);
@@ -83,6 +83,17 @@ try{
 		
 	
 	
+	}
+	function recupererReclamation($Id){
+		$sql="SELECT * from reclamation where id=$Id";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
 	}
 }
 	

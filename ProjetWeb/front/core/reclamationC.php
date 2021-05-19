@@ -32,6 +32,7 @@ class reclamtionC {
 	}
 	
 	function afficherReclamtions(){
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
 		$sql= " SELECT * From reclamation";
 		$db = config::getConnexion();
 		try{

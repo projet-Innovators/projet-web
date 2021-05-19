@@ -12,14 +12,14 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="CodedThemes">
-    <meta name="keywords"
-    content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="keywords" content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="CodedThemes">
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <!-- Google font--><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
     <!-- Required Fremwork -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/css/bootstrap.min.css">
     <!-- themify-icons line icon -->
@@ -36,16 +36,36 @@
     <div class="theme-loader">
         <div class="ball-scale">
             <div class='contain'>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
-                <div class="ring"><div class="frame"></div></div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -78,7 +98,7 @@
                             <li>
                                 <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
                             </li>
-                            
+
                             <li>
                                 <a href="#!" onclick="javascript:toggleFullScreen()">
                                     <i class="ti-fullscreen"></i>
@@ -163,7 +183,7 @@
                                 </ul>
                             </li>
                         </ul>
-                        
+
                     </div>
                 </div>
             </nav>
@@ -193,7 +213,7 @@
                                 </div>
                             </div>
                             <div class="pcoded-search">
-                                <span class="searchbar-toggle">  </span>
+                                <span class="searchbar-toggle"> </span>
                                 <div class="pcoded-search-box ">
                                     <input type="text" placeholder="Search">
                                     <span class="search-icon"><i class="ti-search" aria-hidden="true"></i></span>
@@ -215,14 +235,8 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                <li class="">
-                                    <a href="checkout_promo.php">
-                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Promotion</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
                                 
+
                             </ul>
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Gestion Reclamation</div>
                             <ul class="pcoded-item pcoded-left-item">
@@ -233,12 +247,12 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                
+
                             </ul>
 
-                        
 
-                         
+
+
                         </div>
                     </nav>
                     <div class="pcoded-content">
@@ -255,7 +269,7 @@
                                                     <i class="icofont icofont-file-code bg-c-blue"></i>
                                                     <div class="d-inline">
                                                         <h4>Gestion Categorie</h4>
-                                                      
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -281,86 +295,93 @@
                                     <!-- Page body start -->
                                     <div class="page-body">
                                         <div class="row">
-                                        <div class="col-md-4">
-                <h3 class="text-center text-info">Add Categorie</h3>
-                <hr>
-                <form class="was-validated" action="AjouterCategorie.php" method="POST">
+                                            <div class="col-md-4">
+                                                <h3 class="text-center text-info">Add Categorie</h3>
+                                                <hr>
+                                                <form class="was-validated" action="AjouterCategorie.php" method="POST">
 
 
-                  <div class="form-group">
-                    <input type="text" name="nom" class="form-control" required pattern="[0-9a-zA-Z,/. ]{3,12}" placeholder="Enter Name Of the Categorie">
-                  </div>
+                                                    <div class="form-group">
+                                                        <input type="text" name="nom" class="form-control" required pattern="[0-9a-zA-Z,/. ]{3,12}" placeholder="Enter Name Of the Categorie">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="file" name="image" class="custom-file">
+                                                    </div>
+                                                    <div class="form-group">
 
-                  <div class="form-group">
+                                                        <input type="submit" name="add" class="btn btn-primary btn-block" value="Add">
 
-                    <input type="submit" name="add" class="btn btn-primary btn-block" value="Add">
+                                                    </div>
+                                                </form>
 
-                  </div>
-                </form>
+                                            </div>
+                                            <hr>
+                                            <?PHP
+                                            include "../core/categorieC.php";
+                                            $categorie1C = new CategorieC();
+                                            $listeCategorie = $categorie1C->afficherCategories();
 
-              </div>
-              <hr>
-              <?PHP
-              include "../core/categorieC.php";
-              $categorie1C = new CategorieC();
-              $listeCategorie = $categorie1C->afficherCategories();
-
-              ?>
-  
-
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th style="width: 5%">ID</th>
-                    <th>Nom</th>
-
-                  </tr>
-                </thead>
-
-      
-                <?PHP
-                foreach ($listeCategorie as $row) {
-                ?>
-
-                  <tr>
-                    <td><?PHP echo $row['id']; ?></td>
-                    <td><?PHP echo $row['nom']; ?></td>
-                  
-                    <td  style="width: 5%">
-                      <form method="POST" action="supprimerCategorie.php">
-                        <input type="submit" name="delete" value="Delete" class="btn btn-danger btn-block">
-                        <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
-                      </form>
-                    </td>
-                    <td  style="width: 5%"><a class="btn btn-success btn-block" href="ModifierCategorie.php?id=<?PHP echo $row['id']; ?>">
-                        Modifier</a></td>
-
-                  </tr>
+                                            ?>
 
 
-
-                <?php
-
-                }
-                ?>
-
-
-
-
-         
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 5%">ID</th>
+                                                        <th>Nom</th>
+                                                        <th>Image</th>
+                                                        <th>Delete</th>
+                                                        <th>Update</th>
 
 
-              </table>
+                                                    </tr>
+                                                </thead>
+
+
+                                                <?PHP
+                                                foreach ($listeCategorie as $row) {
+                                                ?>
+
+                                                    <tr>
+                                                        <td><?PHP echo $row['id']; ?></td>
+                                                        <td><?PHP echo $row['nom']; ?></td>
+                                                        <td><img width="80" src="images/<?php echo $row['image'] ?>" alt="<?php echo $row['image'] ?>"></td>
+
+                                                        <td style="width: 5%">
+                                                            <form method="POST" action="supprimerCategorie.php">
+                                                                <input type="submit" name="delete" value="Delete" class="btn btn-danger btn-block">
+                                                                <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
+                                                            </form>
+                                                        </td>
+                                                        <td style="width: 5%"><a class="btn btn-success btn-block" href="ModifierCategorie.php?id=<?PHP echo $row['id']; ?>">
+                                                                Modifier</a></td>
+
+                                                    </tr>
+
+
+
+                                                <?php
+
+                                                }
+                                                ?>
+
+
+
+
+
+
+
+                                            </table>
                                         </div>
 
-<div class="fixed-button">
-	<a href="https://codedthemes.com/item/guru-able-admin-template/" target="_blank" class="btn btn-md btn-primary">
-	  <i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
-	</a>
-</div>
+                                        <div class="fixed-button">
+                                            <a href="https://codedthemes.com/item/guru-able-admin-template/" target="_blank" class="btn btn-md btn-primary">
+                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
+                                            </a>
+                                        </div>
                                         <!-- Warning Section Starts -->
                                         <!-- Older IE warning message -->
-<!--[if lt IE 9]>
+                                        <!--[if lt IE 9]>
 <div class="ie-warning">
     <h1>Warning!!</h1>
     <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers
@@ -402,24 +423,24 @@
     <p>Sorry for the inconvenience!</p>
 </div>
 <![endif]-->
-<!-- Warning Section Ends -->
-<!-- Required Jquery -->
-<script type="text/javascript" src="assets/js/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.min.js"></script>
-<script type="text/javascript" src="assets/js/popper.js/popper.min.js"></script>
-<script type="text/javascript" src="assets/js/bootstrap/js/bootstrap.min.js"></script>
-<!-- jquery slimscroll js -->
-<script type="text/javascript" src="assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
-<!-- modernizr js -->
-<script type="text/javascript" src="assets/js/modernizr/modernizr.js"></script>
-<script type="text/javascript" src="assets/js/modernizr/css-scrollbars.js"></script>
-<!-- classie js -->
-<script type="text/javascript" src="assets/js/classie/classie.js"></script>
-<!-- Custom js -->
-<script type="text/javascript" src="assets/js/script.js"></script>
-<script src="assets/js/pcoded.min.js"></script>
-<script src="assets/js/demo-12.js"></script>
-<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+                                        <!-- Warning Section Ends -->
+                                        <!-- Required Jquery -->
+                                        <script type="text/javascript" src="assets/js/jquery/jquery.min.js"></script>
+                                        <script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.min.js"></script>
+                                        <script type="text/javascript" src="assets/js/popper.js/popper.min.js"></script>
+                                        <script type="text/javascript" src="assets/js/bootstrap/js/bootstrap.min.js"></script>
+                                        <!-- jquery slimscroll js -->
+                                        <script type="text/javascript" src="assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+                                        <!-- modernizr js -->
+                                        <script type="text/javascript" src="assets/js/modernizr/modernizr.js"></script>
+                                        <script type="text/javascript" src="assets/js/modernizr/css-scrollbars.js"></script>
+                                        <!-- classie js -->
+                                        <script type="text/javascript" src="assets/js/classie/classie.js"></script>
+                                        <!-- Custom js -->
+                                        <script type="text/javascript" src="assets/js/script.js"></script>
+                                        <script src="assets/js/pcoded.min.js"></script>
+                                        <script src="assets/js/demo-12.js"></script>
+                                        <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
 </body>
 
 </html>
